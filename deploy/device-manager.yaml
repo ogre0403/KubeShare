@@ -79,7 +79,9 @@ spec:
   restartPolicy: Always
   containers:
   - name: kubeshare-device-manager
-    image: ncy9371/kubeshare-device-manager:20200429135835
+    image: ogre0403/kubeshare-device-manager:nchc
+    imagePullPolicy: Always
+#    image: ncy9371/kubeshare-device-manager:20200429135835
 
 ---
 
@@ -106,13 +108,17 @@ spec:
         effect: NoSchedule
       initContainers:
       - name: gemini-hook-init
-        image: ncy9371/kubeshare-gemini-hook-init:20200429135835
+        image: ogre0403/kubeshare-gemini-hook-init:nchc
+        imagePullPolicy: Always
+        #        image: ncy9371/kubeshare-gemini-hook-init:20200429135835
         volumeMounts:
         - name: "kubeshare-library"
           mountPath: /kubeshare/library
       containers:
       - name: config-client
-        image: ncy9371/kubeshare-config-client:20200429135835
+        image: ogre0403/kubeshare-config-client:nchc
+        imagePullPolicy: Always
+        #        image: ncy9371/kubeshare-config-client:20200429135835
         env:
         - name: KUBESHARE_SCHEDULER_IP
           valueFrom:
@@ -124,7 +130,9 @@ spec:
         - name: "kubeshare-library"
           mountPath: "/kubeshare/library"
       - name: gemini-scheduler
-        image: ncy9371/kubeshare-gemini-scheduler:20200429135835
+        image: ogre0403/kubeshare-gemini-scheduler:nchc
+        imagePullPolicy: Always
+        #        image: ncy9371/kubeshare-gemini-scheduler:20200429135835
         volumeMounts:
         - name: "kubeshare-scheduler"
           mountPath: "/kubeshare/scheduler"

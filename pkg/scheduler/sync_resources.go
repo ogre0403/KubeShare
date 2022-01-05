@@ -208,6 +208,7 @@ func syncNodeResources(nodeList []*corev1.Node) (nodeResources NodeResources) {
 			}
 		}
 		if cannotScheduled {
+			wait.Done()
 			return
 		}
 
